@@ -1,7 +1,7 @@
 ---
 layout: archive
 title: "Publications"
-permalink: /publication/2024-02-17-paper-title-number-1
+permalink: /publications
 author_profile: true
 ---
 
