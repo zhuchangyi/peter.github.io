@@ -1,7 +1,7 @@
 ---
 title: "Enhancing GNSS Positioning Using Transformer-Based Correction Network"
 collection: publications
-permalink: /publication/2024-02-17-paper-title-number-1
+permalink: /publications/2024-02-17-paper-title-number-1
 excerpt: ''The paper is about improving GNSS positioning accuracy in urban environments, where NLOS (Non-Line-of-Sight) and multipath effects cause significant challenges. By employing an end-to-end deep learning approach, specifically a Transformer-based correction network, we significantly enhance GNSS positioning accuracy in these challenging scenarios.'
 date: 2024-06-30
 venue: 'ION GNSS+ 2024'
