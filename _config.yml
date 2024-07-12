@@ -27,7 +27,6 @@ author:
   bio              : "Master student in Xidian University"
   location         : "Xi'an, China"
   employer         : "Xidian University"
-  uri              : "https://blog.piger.tech/"
   email            : "changyizhu29@gmail.com" 
 
   # Academic websites
@@ -45,9 +44,9 @@ author:
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
+  github           : "zhuchangyi"
   linkedin         : https://www.linkedin.com/in/%E9%95%BF%E5%AE%9C-%E6%9C%B1-9b4870243/
   medium           : https://medium.com/@2365333260p
-  github           : "zhuchangyi"
   soundcloud       : # Username
   steam            : # Username
   telegram         : # URL
