@@ -32,25 +32,22 @@ author:
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
   impactstory      : # URL
-  orcid            : "http://orcid.org/yourorcidurl"
   semantic         : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   researchgate     : # URL
 
   # Repositories and software development
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "academicpages"
+  github           : "zhuchangyi"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
   linkedin         : https://www.linkedin.com/in/%E9%95%BF%E5%AE%9C-%E6%9C%B1-9b4870243/
   medium           : https://medium.com/@2365333260p
-  pinterest        : # Username
+  github           : "zhuchangyi"
   soundcloud       : # Username
   steam            : # Username
   telegram         : # URL
