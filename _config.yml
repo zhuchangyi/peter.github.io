@@ -7,14 +7,14 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "cn-CN"
+locale                   : "en-US"
 title                    : "Peter's Homepage"
 title_separator          : "-"
 name                     : &name "Peter"
 description              : &description "personal description"
-url                      : https://blog.piger.tech # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "blog" # the subpath of your site, e.g. "/blog"
-repository               : "blog.piger.tech"
+url                      : https://blog.piger.tech/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : "" # the subpath of your site, e.g. "/blog"
+repository               : "https://blog.piger.tech/"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -48,18 +48,8 @@ author:
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
-  facebook         : # Username
-  flickr           : # Username
-  foursquare       : # Username
-  goodreads        : # Username
-  google_plus      : # Username
-  keybase          : # Username
-  instagram        : # Username
-  lastfm           : # Username
-  linkedin         : # Username
-  mastodon         : # URL
-  medium           : # URL
+  linkedin         : https://www.linkedin.com/in/%E9%95%BF%E5%AE%9C-%E6%9C%B1-9b4870243/
+  medium           : https://medium.com/@2365333260p
   pinterest        : # Username
   soundcloud       : # Username
   steam            : # Username
