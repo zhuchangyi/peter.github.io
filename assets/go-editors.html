@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; worker-src 'self' https://cdn.jsdelivr.net;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; worker-src 'self' https://cdn.jsdelivr.net;'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Go Code Editor</title>
@@ -17,6 +17,7 @@
             overflow-y: auto;
         }
         .button-container {
+            margin-top: 1em; /* 增加顶部外边距 */
             margin-bottom: 1em;
         }
         .button-container button {
@@ -134,3 +135,4 @@
     </script>
 </body>
 </html>
+``
