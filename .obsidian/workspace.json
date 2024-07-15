@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2012-08-14-blog-post-1.md",
+                "file": "_posts/2014-08-14-blog-post-3.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3ca6e79ec91e8f52",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2012-08-14-blog-post-1.md",
+                "file": "_posts/2014-08-14-blog-post-3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2012-08-14-blog-post-1.md",
+                "file": "_posts/2014-08-14-blog-post-3.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2012-08-14-blog-post-1.md"
+                "file": "_posts/2014-08-14-blog-post-3.md"
               }
             }
           }
@@ -146,6 +147,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "1924de2daf265368",
-  "lastOpenFiles": []
+  "active": "a1bf0a34d57f9911",
+  "lastOpenFiles": [
+    "_posts/2013-08-14-blog-post-2.md",
+    "_posts/2012-08-14-blog-post-1.md"
+  ]
 }

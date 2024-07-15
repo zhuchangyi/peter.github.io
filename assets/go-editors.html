@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; worker-src 'self' https://cdn.jsdelivr.net;'>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; worker-src 'self' https://cdn.jsdelivr.net;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Go Code Editor</title>
     <style>
-        .go-editor-container {
-            margin-bottom: 2em;
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .editor-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100px;
+            max-height: calc(100% - 120px); /* Adjust based on other elements */
+            transition: flex 0.3s ease;
         }
         #editor {
+            flex: 1;
             border: 1px solid #333;
-            font-size: 18px;
-            min-height: 300px;
-            max-height: 1500px;
-            overflow-y: auto;
+            font-size: 14px;
+            overflow: hidden;
         }
         .button-container {
-            margin-top: 1em; /* 增加顶部外边距 */
-            margin-bottom: 1em;
+            padding: 10px 0;
         }
         .button-container button {
             padding: 0.5em 1em;
@@ -36,50 +52,93 @@
             background-color: #f0f0f0;
             color: #333;
         }
+        .save-button {
+            background-color: #4caf50;
+            color: white;
+        }
+        .output-container {
+            height: 150px; /* Reduced initial height */
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            transition: height 0.3s ease;
+        }
         #output-container {
+            flex: 1;
             background-color: #000000;
             border: 1px solid #333;
             border-radius: 2px;
             color: #ffffff;
-            height: 300px;
-            overflow-y: auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         .output-header {
             background-color: #1a1a1a;
             padding: 0.5em;
             font-weight: bold;
             color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         #output {
+            flex: 1;
             padding: 1em;
+            overflow-y: auto;
             white-space: pre-wrap;
             font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 16px;
+            font-size: 14px;
             color: #ffffff;
         }
         #execution-time {
-            float: right;
             font-size: 0.9em;
             color: #888;
         }
-        .monaco-editor {
-            font-size: 16px !important;
+        #toggle-output {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+        #versions {
+            margin-top: 10px;
+        }
+        .version-item {
+            cursor: pointer;
+            padding: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+        }
+        .version-item:hover {
+            background-color: #e0e0e0;
         }
     </style>
 </head>
 <body>
-    <div class="go-editor-container">
-        <div id="editor"></div>
+    <div class="container">
+        <div class="editor-container">
+            <div id="editor"></div>
+        </div>
         <div class="button-container">
             <button id="run" class="run-button">Run</button>
             <button id="reset" class="reset-button">Reset</button>
+            <button id="save" class="save-button">Save</button>
         </div>
-    </div>
-    <div id="output-container">
-        <div class="output-header">
-            Output <span id="execution-time"></span>
+        <div class="output-container">
+            <div id="output-container">
+                <div class="output-header">
+                    <span>Output</span>
+                    <span id="execution-time"></span>
+                    <button id="toggle-output">▲</button>
+                </div>
+                <pre id="output"></pre>
+            </div>
         </div>
-        <pre id="output"></pre>
+        <div id="versions">
+            <h3>Versions:</h3>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.31.1/min/vs/loader.js"></script>
@@ -90,25 +149,33 @@
                 value: 'package main\n\nimport "fmt"\n\nfunc main() {\n\tfmt.Println("Hello, World!")\n}',
                 language: 'go',
                 theme: 'vs-dark',
-                fontSize: 16,
-                lineHeight: 24,
+                fontSize: 14,
+                lineHeight: 20,
                 automaticLayout: true,
                 scrollBeyondLastLine: false,
                 minimap: { enabled: false }
             });
 
-            function adjustEditorHeight() {
-                var contentHeight = Math.min(1500, Math.max(500, editor.getContentHeight()));
-                editor.layout({ width: editor.getLayoutInfo().width, height: contentHeight });
+            // 获取URL中的noteId参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const noteId = urlParams.get('noteId') || 'example-note-id'; // 默认值为'example-note-id'
+
+            function adjustLayout() {
+                var containerHeight = document.querySelector('.container').offsetHeight;
+                var buttonContainerHeight = document.querySelector('.button-container').offsetHeight;
+                var outputContainerHeight = document.querySelector('.output-container').offsetHeight;
+                var editorHeight = containerHeight - buttonContainerHeight - outputContainerHeight - 20; // 20px for padding
+                document.querySelector('.editor-container').style.height = editorHeight + 'px';
+                editor.layout();
             }
 
-            editor.onDidChangeModelContent(adjustEditorHeight);
-            adjustEditorHeight();
+            window.addEventListener('resize', adjustLayout);
+            adjustLayout(); // Initial adjustment
 
             document.getElementById('run').onclick = function() {
                 var startTime = performance.now();
                 var code = editor.getValue();
-                fetch('https://orjp.leatherpigeon.shop:8080/run', {  // Update this URL to point to your local server
+                fetch('https://orjp.leatherpigeon.shop:8080/run', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -129,10 +196,84 @@
 
             document.getElementById('reset').onclick = function() {
                 editor.setValue('package main\n\nimport "fmt"\n\nfunc main() {\n\tfmt.Println("Hello, World!")\n}');
-                adjustEditorHeight();
+                adjustLayout();
             };
+
+            document.getElementById('save').onclick = function() {
+                var code = editor.getValue();
+                fetch('https://orjp.leatherpigeon.shop:8080/saveCode', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ code: code, noteId: noteId }) // 传递noteId
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('Code saved successfully');
+                        loadVersions(); // 保存成功后重新加载版本列表
+                    } else {
+                        console.error('Failed to save code:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error saving code:', error);
+                });
+            };
+
+            function loadVersions() {
+                fetch('https://orjp.leatherpigeon.shop:8080/getCode', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ noteId: noteId }) // 传递noteId
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        editor.setValue(data.code);
+                        let versionsContainer = document.getElementById('versions');
+                        versionsContainer.innerHTML = '<h3>Versions:</h3>';
+                        if (data.versions && data.versions.length > 0) {
+                            data.versions.forEach((version, index) => {
+                                let versionItem = document.createElement('div');
+                                versionItem.className = 'version-item';
+                                versionItem.textContent = `Version ${index + 1} - ${new Date(version.timestamp).toLocaleString()}`;
+                                versionItem.onclick = () => editor.setValue(version.content);
+                                versionsContainer.appendChild(versionItem);
+                            });
+                        } else {
+                            versionsContainer.innerHTML += '<p>No versions available.</p>';
+                        }
+                    } else {
+                        console.log('No saved code found:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading versions:', error);
+                });
+            }
+
+            var outputContainer = document.querySelector('.output-container');
+            var toggleButton = document.getElementById('toggle-output');
+            var isOutputExpanded = true;
+
+            toggleButton.onclick = function() {
+                isOutputExpanded = !isOutputExpanded;
+                if (isOutputExpanded) {
+                    outputContainer.style.height = '200px';
+                    toggleButton.textContent = '▲';
+                } else {
+                    outputContainer.style.height = '100px';
+                    toggleButton.textContent = '▼';
+                }
+                adjustLayout();
+            };
+
+            loadVersions(); // 初始加载版本列表
         });
     </script>
 </body>
 </html>
-``
