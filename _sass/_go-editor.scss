@@ -5,9 +5,9 @@
         border: 1px solid #333;
         margin-bottom: 1em;
         font-size: 16px;
-        min-height: 200px;  /* 设置最小高度 */
-        max-height: 600px; /* 设置最大高度 */
-        overflow-y: auto;  /* 当内容超过最大高度时显示滚动条 */
+        min-height: 500px;  
+        max-height: 1000px; 
+        overflow-y: auto;  
     }
 
     .button-container {
@@ -53,6 +53,7 @@
             font-size: 14px;
             max-height: 300px; /* 设置输出区域的最大高度 */
             overflow-y: auto; /* 当内容超过最大高度时显示滚动条 */
+            color: #ffffff; /* 确保输出文字为白色 */
         }
 
         #execution-time {
