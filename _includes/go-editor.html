@@ -81,9 +81,9 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/monaco-editor@0.31.1/min/vs/loader.js"></script>
     <script>
-        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.31.1/min/vs' }});
+        require.config({ paths: { 'vs': '//cdn.jsdelivr.net/npm/monaco-editor@0.31.1/min/vs' }});
         require(['vs/editor/editor.main'], function() {
             var editor = monaco.editor.create(document.getElementById('editor'), {
                 value: 'package main\n\nimport "fmt"\n\nfunc main() {\n\tfmt.Println("Hello, World!")\n}',
