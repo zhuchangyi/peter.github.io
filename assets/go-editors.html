@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval';">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Go Code Editor</title>
@@ -15,7 +15,6 @@
             font-size: 16px;
             min-height: 500px;
             max-height: 1500px;
-            height: 500px; /* Explicitly set height */
             overflow-y: auto;
         }
         .button-container {
@@ -83,24 +82,11 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.31.1/min/vs/loader.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/monaco-editor@0.31.1/min/vs/loader.js"></script>
     <script>
-        console.log('Monaco Editor is being initialized');
-        require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.31.1/min/vs' }});
+        require.config({ paths: { 'vs': '//cdn.jsdelivr.net/npm/monaco-editor@0.31.1/min/vs' }});
         require(['vs/editor/editor.main'], function() {
-            console.log('Monaco Editor scripts loaded');
-            
-            // Check if editor element exists
-            const editorElement = document.getElementById('editor');
-            if (editorElement) {
-                console.log('#editor element found:', editorElement);
-            } else {
-                console.error('#editor element not found');
-                return;
-            }
-
-            // Create the Monaco Editor
-            var editor = monaco.editor.create(editorElement, {
+            var editor = monaco.editor.create(document.getElementById('editor'), {
                 value: 'package main\n\nimport "fmt"\n\nfunc main() {\n\tfmt.Println("Hello, World!")\n}',
                 language: 'go',
                 theme: 'vs-dark',
@@ -111,12 +97,9 @@
                 minimap: { enabled: false }
             });
 
-            console.log('Monaco Editor initialized');
-
             function adjustEditorHeight() {
                 var contentHeight = Math.min(1500, Math.max(500, editor.getContentHeight()));
                 editor.layout({ width: editor.getLayoutInfo().width, height: contentHeight });
-                console.log('Editor height adjusted to:', contentHeight);
             }
 
             editor.onDidChangeModelContent(adjustEditorHeight);
@@ -137,7 +120,6 @@
                     var endTime = performance.now();
                     document.getElementById('output').textContent = data.output;
                     document.getElementById('execution-time').textContent = `${((endTime - startTime) / 1000).toFixed(2)}s`;
-                    console.log('Code execution result:', data);
                 })
                 .catch(error => {
                     console.error('Error:', error);
