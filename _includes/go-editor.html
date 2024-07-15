@@ -1,151 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go Code Editor</title>
-    <style>
-        .go-editor-container {
-            margin-bottom: 2em;
-        
-            #editor {
-                border: 1px solid #333;
-                margin-bottom: 1em;
-                font-size: 16px;
-                min-height: 400px;  
-                max-height: 1000px; 
-                overflow-y: auto;  
-            }
-        
-            .button-container {
-                margin-bottom: 1em;
-        
-                button {
-                    padding: 0.5em 1em;
-                    margin-right: 0.5em;
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    font-size: 1em;
-                }
-        
-                .run-button {
-                    background-color: #0077ff;
-                    color: white;
-                }
-        
-                .reset-button {
-                    background-color: #f0f0f0;
-                    color: #333;
-                }
-            }
-        
-            #output-container {
-                background-color: #000000; /* 纯黑色背景 */
-                border: 1px solid #333;
-                border-radius: 2px;
-                color: #ffffff; /* 白色文字 */
-        
-                .output-header {
-                    background-color: #1a1a1a; /* 稍微浅一点的黑色 */
-                    padding: 0.5em;
-                    font-weight: bold;
-                    color: #ffffff;
-                }
-        
-                #output {
-                    padding: 1em;
-                    white-space: pre-wrap;
-                    font-family: 'Consolas', 'Courier New', monospace;
-                    font-size: 16px;
-                    max-height: 300px; /* 设置输出区域的最大高度 */
-                    overflow-y: auto; /* 当内容超过最大高度时显示滚动条 */
-                    color: #ffffff; /* 确保输出文字为白色 */
-                }
-        
-                #execution-time {
-                    float: right;
-                    font-size: 0.9em;
-                    color: #888;
-                }
-            }
-        }
-        
-        /* 确保 Monaco 编辑器使用更大的字体 */
-        .monaco-editor {
-            font-size: 16px !important;
-        }
-    </style>
-</head>
-<body>
-    <div class="go-editor-container">
-        <div id="editor"></div> <!-- 删除内联样式 -->
-        <div class="button-container">
-            <button id="run" class="run-button">Run</button>
-            <button id="reset" class="reset-button">Reset</button>
-        </div>
-        <div id="output-container">
-            <div class="output-header">
-                Output <span id="execution-time"></span>
-            </div>
-            <pre id="output"></pre>
-        </div>
+<div class="go-editor-container">
+    <div id="editor" style="width: 100%; min-height: 200px;"></div>
+    <div class="button-container">
+        <button id="run" class="run-button">Run</button>
+        <button id="reset" class="reset-button">Reset</button>
     </div>
+    <div id="output-container">
+        <div class="output-header">
+            Output <span id="execution-time"></span>
+        </div>
+        <pre id="output"></pre>
+    </div>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
-    <script>
-        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.31.1/min/vs' }});
-        require(['vs/editor/editor.main'], function() {
-            var editor = monaco.editor.create(document.getElementById('editor'), {
-                value: 'package main\n\nimport "fmt"\n\nfunc main() {\n\tfmt.Println("Hello, World!")\n}',
-                language: 'go',
-                theme: 'vs-dark',
-                fontSize: 16,
-                lineHeight: 24,
-                automaticLayout: true, // 允许编辑器自动调整布局
-                scrollBeyondLastLine: false, // 禁止滚动超过最后一行
-                minimap: { enabled: false } // 禁用小地图以节省空间
-            });
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+<script>
+require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.31.1/min/vs' }});
+require(['vs/editor/editor.main'], function() {
+    var editor = monaco.editor.create(document.getElementById('editor'), {
+        value: 'package main\n\nimport "fmt"\n\nfunc main() {\n\tfmt.Println("Hello, World!")\n}',
+        language: 'go',
+        theme: 'vs-dark',
+        fontSize: 16,
+        lineHeight: 24,
+        automaticLayout: true, // 允许编辑器自动调整布局
+        scrollBeyondLastLine: false, // 禁止滚动超过最后一行
+        minimap: { enabled: false } // 禁用小地图以节省空间
+    });
 
-            // 函数：调整编辑器高度
-            function adjustEditorHeight() {
-                var contentHeight = Math.min(1500, Math.max(500, editor.getContentHeight()));
-                editor.layout({ width: editor.getLayoutInfo().width, height: contentHeight });
-            }
+    // 函数：调整编辑器高度
+    function adjustEditorHeight() {
+        var contentHeight = Math.min(600, Math.max(200, editor.getContentHeight()));
+        editor.layout({ width: editor.getLayoutInfo().width, height: contentHeight });
+    }
 
-            // 监听编辑器内容变化
-            editor.onDidChangeModelContent(adjustEditorHeight);
+    // 监听编辑器内容变化
+    editor.onDidChangeModelContent(adjustEditorHeight);
 
-            // 初始调整
-            adjustEditorHeight();
+    // 初始调整
+    adjustEditorHeight();
 
-            document.getElementById('run').onclick = function() {
-                var startTime = performance.now();
-                var code = editor.getValue();
-                fetch('http://orjp.leatherpigeon.shop:8080/run', {  
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ code: code })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    var endTime = performance.now();
-                    document.getElementById('output').textContent = data.output;
-                    document.getElementById('execution-time').textContent = `${((endTime - startTime) / 1000).toFixed(2)}s`;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('output').textContent = 'Error: ' + error;
-                });
-            };
-
-            document.getElementById('reset').onclick = function() {
-                editor.setValue('package main\n\nimport "fmt"\n\nfunc main() {\n\tfmt.Println("Hello, World!")\n}');
-                adjustEditorHeight();
-            };
+    document.getElementById('run').onclick = function() {
+        var startTime = performance.now();
+        var code = editor.getValue();
+        fetch('http://orjp.leatherpigeon.shop:8080/run', {  
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ code: code })
+        })
+        .then(response => response.json())
+        .then(data => {
+            var endTime = performance.now();
+            document.getElementById('output').textContent = data.output;
+            document.getElementById('execution-time').textContent = `${((endTime - startTime) / 1000).toFixed(2)}s`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('output').textContent = 'Error: ' + error;
         });
-    </script>
-</body>
-</html>
+    };
+
+    document.getElementById('reset').onclick = function() {
+        editor.setValue('package main\n\nimport "fmt"\n\nfunc main() {\n\tfmt.Println("Hello, World!")\n}');
+        adjustEditorHeight();
+    };
+});
+</script>
