@@ -146,7 +146,7 @@
         require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.31.1/min/vs' }});
         require(['vs/editor/editor.main'], function() {
             var editor = monaco.editor.create(document.getElementById('editor'), {
-                value: 'package main\n\nimport "fmt"\n\nfunc main() {\n\tfmt.Println("Hello, World!")\n}',
+                value: '',
                 language: 'go',
                 theme: 'vs-dark',
                 fontSize: 14,
@@ -159,6 +159,40 @@
             // 获取URL中的noteId参数
             const urlParams = new URLSearchParams(window.location.search);
             const noteId = urlParams.get('noteId') || 'example-note-id'; // 默认值为'example-note-id'
+
+            function loadVersions() {
+                fetch('https://orjp.leatherpigeon.shop:8080/getCode', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ noteId: noteId }) // 传递noteId
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        editor.setValue(data.code);
+                        let versionsContainer = document.getElementById('versions');
+                        versionsContainer.innerHTML = '<h3>Versions:</h3>';
+                        if (data.versions && data.versions.length > 0) {
+                            data.versions.forEach((version, index) => {
+                                let versionItem = document.createElement('div');
+                                versionItem.className = 'version-item';
+                                versionItem.textContent = `Version ${index + 1} - ${new Date(version.timestamp).toLocaleString()}`;
+                                versionItem.onclick = () => editor.setValue(version.content);
+                                versionsContainer.appendChild(versionItem);
+                            });
+                        } else {
+                            versionsContainer.innerHTML += '<p>No versions available.</p>';
+                        }
+                    } else {
+                        console.log('No saved code found:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading versions:', error);
+                });
+            }
 
             function adjustLayout() {
                 var containerHeight = document.querySelector('.container').offsetHeight;
@@ -221,40 +255,6 @@
                     console.error('Error saving code:', error);
                 });
             };
-
-            function loadVersions() {
-                fetch('https://orjp.leatherpigeon.shop:8080/getCode', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ noteId: noteId }) // 传递noteId
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        editor.setValue(data.code);
-                        let versionsContainer = document.getElementById('versions');
-                        versionsContainer.innerHTML = '<h3>Versions:</h3>';
-                        if (data.versions && data.versions.length > 0) {
-                            data.versions.forEach((version, index) => {
-                                let versionItem = document.createElement('div');
-                                versionItem.className = 'version-item';
-                                versionItem.textContent = `Version ${index + 1} - ${new Date(version.timestamp).toLocaleString()}`;
-                                versionItem.onclick = () => editor.setValue(version.content);
-                                versionsContainer.appendChild(versionItem);
-                            });
-                        } else {
-                            versionsContainer.innerHTML += '<p>No versions available.</p>';
-                        }
-                    } else {
-                        console.log('No saved code found:', data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error loading versions:', error);
-                });
-            }
 
             var outputContainer = document.querySelector('.output-container');
             var toggleButton = document.getElementById('toggle-output');
