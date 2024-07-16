@@ -114,6 +114,14 @@
         .version-item:hover {
             background-color: #e0e0e0;
         }
+        #toggle-versions {
+            background: none;
+            border: none;
+            color: #0077ff;
+            cursor: pointer;
+            font-size: 1em;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
@@ -138,6 +146,8 @@
         </div>
         <div id="versions">
             <h3>Versions:</h3>
+            <div id="version-list"></div>
+            <button id="toggle-versions">▼</button>
         </div>
     </div>
 
@@ -160,6 +170,8 @@
             const urlParams = new URLSearchParams(window.location.search);
             const noteId = urlParams.get('noteId') || 'example-note-id'; // 默认值为'example-note-id'
 
+            let versionsData = [];
+
             function loadVersions() {
                 fetch('https://orjp.leatherpigeon.shop:8080/getCode', {
                     method: 'POST',
@@ -172,19 +184,8 @@
                 .then(data => {
                     if (data.success) {
                         editor.setValue(data.code);
-                        let versionsContainer = document.getElementById('versions');
-                        versionsContainer.innerHTML = '<h3>Versions:</h3>';
-                        if (data.versions && data.versions.length > 0) {
-                            data.versions.forEach((version, index) => {
-                                let versionItem = document.createElement('div');
-                                versionItem.className = 'version-item';
-                                versionItem.textContent = `Version ${index + 1} - ${new Date(version.timestamp).toLocaleString()}`;
-                                versionItem.onclick = () => editor.setValue(version.content);
-                                versionsContainer.appendChild(versionItem);
-                            });
-                        } else {
-                            versionsContainer.innerHTML += '<p>No versions available.</p>';
-                        }
+                        versionsData = data.versions || [];
+                        renderVersions();
                     } else {
                         console.log('No saved code found:', data.message);
                     }
@@ -192,6 +193,25 @@
                 .catch(error => {
                     console.error('Error loading versions:', error);
                 });
+            }
+
+            function renderVersions() {
+                let versionsContainer = document.getElementById('version-list');
+                versionsContainer.innerHTML = '';
+                let versionsToShow = isVersionsExpanded ? versionsData : versionsData.slice(0, 3);
+                versionsToShow.forEach((version, index) => {
+                    let versionItem = document.createElement('div');
+                    versionItem.className = 'version-item';
+                    versionItem.textContent = `Version ${index + 1} - ${new Date(version.timestamp).toLocaleString()}`;
+                    versionItem.onclick = () => editor.setValue(version.content);
+                    versionsContainer.appendChild(versionItem);
+                });
+                if (versionsData.length > 3) {
+                    document.getElementById('toggle-versions').style.display = 'block';
+                } else {
+                    document.getElementById('toggle-versions').style.display = 'none';
+                }
+                document.getElementById('toggle-versions').textContent = isVersionsExpanded ? '▲' : '▼';
             }
 
             function adjustLayout() {
@@ -235,30 +255,40 @@
 
             document.getElementById('save').onclick = function() {
                 var code = editor.getValue();
-                fetch('https://orjp.leatherpigeon.shop:8080/saveCode', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ code: code, noteId: noteId }) // 传递noteId
-                })
+                fetch('https://api.ipify.org?format=json') // 获取用户IP地址
                 .then(response => response.json())
                 .then(data => {
-                    if (data.success) {
-                        console.log('Code saved successfully');
-                        loadVersions(); // 保存成功后重新加载版本列表
-                    } else {
-                        console.error('Failed to save code:', data.message);
-                    }
+                    var ipAddress = data.ip;
+                    fetch('https://orjp.leatherpigeon.shop:8080/saveCode', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ code: code, noteId: noteId, ip: ipAddress }) // 传递noteId和IP地址
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('Code saved successfully');
+                            loadVersions(); // 保存成功后重新加载版本列表
+                        } else {
+                            console.error('Failed to save code:', data.message);
+                            document.getElementById('output').textContent = 'Error: ' + data.message; // 显示错误消息
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error saving code:', error);
+                    });
                 })
                 .catch(error => {
-                    console.error('Error saving code:', error);
+                    console.error('Error fetching IP address:', error);
                 });
             };
 
             var outputContainer = document.querySelector('.output-container');
             var toggleButton = document.getElementById('toggle-output');
             var isOutputExpanded = true;
+            var isVersionsExpanded = false;
 
             toggleButton.onclick = function() {
                 isOutputExpanded = !isOutputExpanded;
@@ -272,7 +302,13 @@
                 adjustLayout();
             };
 
-            loadVersions(); // 初始加载版本列表
+            var toggleVersionsButton = document.getElementById('toggle-versions');
+            toggleVersionsButton.onclick = function() {
+                isVersionsExpanded = !isVersionsExpanded;
+                renderVersions();
+            };
+
+            loadVersions(); 
         });
     </script>
 </body>
