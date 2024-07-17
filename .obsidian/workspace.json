@@ -105,7 +105,7 @@
               "state": {
                 "file": "_posts/2014-08-14-blog-post-3.md",
                 "linksCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               }
             }
           },
@@ -147,8 +147,19 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "a1bf0a34d57f9911",
+  "active": "1924de2daf265368",
   "lastOpenFiles": [
+    "_site/posts/2024/07/test/index.html",
+    "_site/posts/2024/07/test",
+    "_site/posts/2024/07",
+    "_site/posts/2024",
+    "_posts/2024-07-17-test.md",
+    "_posts/2024-07-17-blog-post-2.md",
+    "_site/2014-08-14.md",
+    "_site/2014-08-14/index.html",
+    "_site/2014-08-14",
+    "2014-08-14.md",
+    "_posts/2014-08-14-blog-post-3.md",
     "_posts/2013-08-14-blog-post-2.md",
     "_posts/2012-08-14-blog-post-1.md"
   ]

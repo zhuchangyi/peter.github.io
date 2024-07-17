@@ -121,6 +121,11 @@
             cursor: pointer;
             font-size: 1em;
             padding: 5px;
+            display: flex;
+            align-items: center;
+        }
+        #toggle-versions span {
+            margin-left: 5px;
         }
     </style>
 </head>
@@ -145,9 +150,8 @@
             </div>
         </div>
         <div id="versions">
-            <h3>Versions:</h3>
-            <div id="version-list"></div>
-            <button id="toggle-versions">▼</button>
+            <button id="toggle-versions">Versions<span>▼</span></button>
+            <div id="version-list" style="display: none;"></div>
         </div>
     </div>
 
@@ -206,12 +210,7 @@
                     versionItem.onclick = () => editor.setValue(version.content);
                     versionsContainer.appendChild(versionItem);
                 });
-                if (versionsData.length > 3) {
-                    document.getElementById('toggle-versions').style.display = 'block';
-                } else {
-                    document.getElementById('toggle-versions').style.display = 'none';
-                }
-                document.getElementById('toggle-versions').textContent = isVersionsExpanded ? '▲' : '▼';
+                document.getElementById('toggle-versions').innerHTML = `Versions<span>${isVersionsExpanded ? '▲' : '▼'}</span>`;
             }
 
             function adjustLayout() {
@@ -305,6 +304,7 @@
             var toggleVersionsButton = document.getElementById('toggle-versions');
             toggleVersionsButton.onclick = function() {
                 isVersionsExpanded = !isVersionsExpanded;
+                document.getElementById('version-list').style.display = isVersionsExpanded ? 'none' : 'block';
                 renderVersions();
             };
 
