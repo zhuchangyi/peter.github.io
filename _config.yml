@@ -24,9 +24,9 @@ author:
   avatar           : "changyizhu.jpeg"
   name             : "Changyi Zhu"
   pronouns         : "he/him"
-  bio              : "Master student in Xidian University"
-  location         : "Xi'an, China"
-  employer         : "Xidian University"
+  bio              : ""
+  location         : ""
+  employer         : ""
   email            : "changyizhu29@gmail.com" 
 
   # Academic websites
@@ -186,6 +186,9 @@ kramdown:
 
 # Collections
 collections:
+  dsa:
+    output: true
+    permalink: /:collection/:path/
   teaching:
     output: true
     permalink: /:collection/:path/
@@ -202,6 +205,15 @@ collections:
 
 # Defaults
 defaults:
+  # _dsa
+  - scope: 
+      path: ""
+      type: dsa
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
   # _posts
   - scope:
       path: ""

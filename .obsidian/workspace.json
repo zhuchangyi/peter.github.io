@@ -13,13 +13,38 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2014-08-14-blog-post-3.md",
+                "file": "_dsa/2024-07-19-algorithm.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6ee7d889049d8cc9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Templates/Data Structure and Algorithm.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "3c125032dbe1527a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_dsa/测试.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -69,8 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 279.5
   },
   "right": {
     "id": "3ca6e79ec91e8f52",
@@ -86,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2014-08-14-blog-post-3.md",
+                "file": "_dsa/测试.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2014-08-14-blog-post-3.md",
+                "file": "_dsa/测试.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -126,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2014-08-14-blog-post-3.md"
+                "file": "_dsa/测试.md"
               }
             }
           }
@@ -144,23 +168,57 @@
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "command-palette:打开命令面板": false,
+      "templater-obsidian:Templater": false
     }
   },
-  "active": "1924de2daf265368",
+  "active": "3c125032dbe1527a",
   "lastOpenFiles": [
-    "_site/posts/2024/07/test/index.html",
-    "_site/posts/2024/07/test",
-    "_site/posts/2024/07",
-    "_site/posts/2024",
+    "Templates/Data Structure and Algorithm.md",
+    "_dsa/测试.md",
+    "Templates/code blocks.md",
+    "_site/Templates/code blocks.md",
+    "_site/Templates/code blocks/index.html",
+    "_site/Templates/code blocks",
+    "_site/Templates/未命名.md",
+    "_site/Templates/未命名/index.html",
+    "_site/Templates/未命名",
+    "_site/未命名/index.html",
+    "_site/未命名",
+    "_site/dsa/测试/index.html",
+    "_site/dsa/测试",
+    "_site/dsa/未命名/index.html",
+    "_site/dsa/未命名",
+    "_site/dsa/未命名.md",
+    "_dsa/2024-07-19-algorithm.md",
+    "_posts/Data Structure and Algorithm.md",
     "_posts/2024-07-17-test.md",
-    "_posts/2024-07-17-blog-post-2.md",
-    "_site/2014-08-14.md",
-    "_site/2014-08-14/index.html",
-    "_site/2014-08-14",
-    "2014-08-14.md",
+    "_posts/2024-07-19-algorithm.md",
+    "_site/markdown_generator/readme.md",
+    "_site/images/site-logo.png",
+    "_site/images/safari-pinned-tab.svg",
+    "_site/images/profile.png",
+    "_site/images/paragraph-no-indent.png",
+    "_site/images/paragraph-indent.png",
+    "_site/images/mstile-70x70.png",
+    "_site/images/mstile-310x310.png",
+    "_site/images/mstile-310x150.png",
+    "_site/images/mstile-150x150.png",
+    "_site/images/mstile-144x144.png",
+    "_site/CONTRIBUTING.md",
+    "_site/_pages/go-editor.md",
+    "_site/_pages/data-structures-and-algorithms.md",
+    "_pages/data-structures-and-algorithms.md",
+    "_site/dsa/data-structures-and-algorithms.md",
+    "_dsa/data-structures-and-algorithms.md",
+    "_dsa/2024-07-19-algorithm copy.md",
+    "_posts/2015-08-14-blog-post-4.md",
+    "README.md",
+    "Data Structure and Algorithm.md",
+    "_drafts/post-draft.md",
+    "2024-07-17.md",
+    "CONTRIBUTING.md",
     "_posts/2014-08-14-blog-post-3.md",
-    "_posts/2013-08-14-blog-post-2.md",
-    "_posts/2012-08-14-blog-post-1.md"
+    "_posts/2024-07-17-blog-post-2.md"
   ]
 }
