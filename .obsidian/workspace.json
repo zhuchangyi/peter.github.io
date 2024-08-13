@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Templates/Data Structure and Algorithm.md",
+                "file": "_dsa/2024-07-19-algorithm.md",
                 "mode": "source",
                 "source": false
               }
@@ -44,7 +44,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_dsa/测试.md",
+                "file": "_dsa/2024-07-19-algorithm.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_dsa/测试.md",
+                "file": "_dsa/2024-07-19-algorithm.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_dsa/测试.md"
+                "file": "_dsa/2024-07-19-algorithm.md"
               }
             }
           }
@@ -172,7 +172,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "3c125032dbe1527a",
+  "active": "6ee7d889049d8cc9",
   "lastOpenFiles": [
     "Templates/Data Structure and Algorithm.md",
     "_dsa/测试.md",
