@@ -9,7 +9,7 @@ Education
 Work experience
 ======
 **GNSS Algorithm Engineer Intern**       Feb 2024 -- Present  
-*GNSS Positioning Error Correction (Deep Learning Based End To End Design)*  
+*GNSS Positioning Error Correction (Deep Learning Based End To End Design)* 
 Enhanced traditional GNSS positioning algorithms using neural networks to address the accuracy degradation caused by multipath effects in urban environments.  
 
 	**Publication**: [Enhancing GNSS Positioning Using Transformer-Based Correction Network (ION GNSS+ 2024)](https://www.ion.org/gnss/abstracts.cfm?paperID=13586)
