@@ -1,25 +1,18 @@
----
-layout: archive
-title: "CV"
-permalink: /cv/
-author_profile: true
-redirect_from:
-  - /resume
----
 
 {% include base_path %}
 
 Education
 ======
- **Xidian University**, Master's Degree (In Progress) in Electronic Information Engineering,  Xi'an, Shaanxi, China, 2022 -- 2025
- **Taiyuan University of Science and Technology**, Bachelor's Degree in Electronic Information Engineering,  Taiyuan, Shanxi, China, 2018 -- 2022
+**Xidian University**, Master's Degree (In Progress) in Electronic Information Engineering,  Xi'an, Shaanxi, China, 2022 -- 2025
+**Taiyuan University of Science and Technology**, Bachelor's Degree in Electronic Information Engineering,  Taiyuan, Shanxi, China, 2018 -- 2022
 
 Work experience
 ======
 **GNSS Algorithm Engineer Intern**       Feb 2024 -- Present  
 *GNSS Positioning Error Correction (Deep Learning Based End To End Design)*  
-Enhanced traditional GNSS positioning algorithms using neural networks to address the accuracy degradation caused by multipath effects in urban environments.
-**Publication**: [Enhancing GNSS Positioning Using Transformer-Based Correction Network (ION GNSS+ 2024)](https://www.ion.org/gnss/abstracts.cfm?paperID=13586)
+Enhanced traditional GNSS positioning algorithms using neural networks to address the accuracy degradation caused by multipath effects in urban environments.  
+
+	**Publication**: [Enhancing GNSS Positioning Using Transformer-Based Correction Network (ION GNSS+ 2024)](https://www.ion.org/gnss/abstracts.cfm?paperID=13586)
   * Achieved a 25.9% reduction in horizontal MSE and a 42.3% reduction in vertical MSE on a real-world test set compared to the WLS algorithm in single-point positioning accuracy.
   * Improved neural network fitting capability by dividing the positioning results into error intervals, converting the regression problem into a combination of classification and regression.
   * Combined classification problems, considering pseudorange and environmental factors as inputs. Used data processing to extend constellations and address issues such as inconsistent data sizes per epoch and permutation invariance.
