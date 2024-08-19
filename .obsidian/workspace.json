@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_dsa/Find Median from Data Stream.md",
+                "file": "_pages/cv.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_dsa/Find Median from Data Stream.md",
+                "file": "_pages/cv.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_dsa/Find Median from Data Stream.md",
+                "file": "_pages/cv.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_dsa/Find Median from Data Stream.md"
+                "file": "_pages/cv.md"
               }
             }
           }
@@ -147,14 +147,14 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "1924de2daf265368",
+  "active": "a1bf0a34d57f9911",
   "lastOpenFiles": [
+    "_dsa/Find Median from Data Stream.md",
     "Pasted image 20240819164513.png",
     "_dsa/2024-07-19-algorithm.md",
     "_posts/2024-07-17-test.md",
     "_posts/2014-08-14-blog-post-3.md",
     "_posts/2012-08-14-blog-post-1.md",
-    "_dsa/Find Median from Data Stream.md",
     "Templates/code blocks.md",
     "Templates/Data Structure and Algorithm.md",
     "_dsa/2024-07-19-algorithm copy.md",
@@ -183,7 +183,6 @@
     "_site/images/mstile-310x310.png",
     "_site/images/mstile-310x150.png",
     "_site/images/mstile-150x150.png",
-    "_site/images/mstile-144x144.png",
     "_site/CONTRIBUTING.md",
     "_site/_pages/go-editor.md",
     "_site/_pages/data-structures-and-algorithms.md",
