@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_pages/cv.md",
+                "file": "_dsa/Find Median from Data Stream.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_pages/cv.md",
+                "file": "_dsa/Find Median from Data Stream.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_pages/cv.md",
+                "file": "_dsa/Find Median from Data Stream.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_pages/cv.md"
+                "file": "_dsa/Find Median from Data Stream.md"
               }
             }
           }
@@ -147,8 +147,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "a1bf0a34d57f9911",
+  "active": "1924de2daf265368",
   "lastOpenFiles": [
+    "_pages/cv.md",
     "_dsa/Find Median from Data Stream.md",
     "Pasted image 20240819164513.png",
     "_dsa/2024-07-19-algorithm.md",
