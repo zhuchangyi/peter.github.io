@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_dsa/Find Median from Data Stream.md",
+                "file": "_dsa/Permutations 全排列.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_dsa/Find Median from Data Stream.md",
+                "file": "_dsa/Permutations 全排列.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_dsa/Find Median from Data Stream.md",
+                "file": "_dsa/Permutations 全排列.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_dsa/Find Median from Data Stream.md"
+                "file": "_dsa/Permutations 全排列.md"
               }
             }
           }
@@ -149,16 +149,18 @@
   },
   "active": "1924de2daf265368",
   "lastOpenFiles": [
-    "_pages/cv.md",
+    "_dsa/Heap 堆.md",
+    "_dsa/Permutations 全排列.md",
     "_dsa/Find Median from Data Stream.md",
+    "Templates/Data Structure and Algorithm.md",
+    "Templates/code blocks.md",
+    "_dsa/2024-07-19-algorithm copy.md",
+    "_pages/cv.md",
     "Pasted image 20240819164513.png",
     "_dsa/2024-07-19-algorithm.md",
     "_posts/2024-07-17-test.md",
     "_posts/2014-08-14-blog-post-3.md",
     "_posts/2012-08-14-blog-post-1.md",
-    "Templates/code blocks.md",
-    "Templates/Data Structure and Algorithm.md",
-    "_dsa/2024-07-19-algorithm copy.md",
     "_site/Templates/code blocks.md",
     "_site/Templates/code blocks/index.html",
     "_site/Templates/code blocks",
@@ -192,8 +194,6 @@
     "_dsa/data-structures-and-algorithms.md",
     "_posts/2015-08-14-blog-post-4.md",
     "README.md",
-    "Data Structure and Algorithm.md",
-    "_drafts/post-draft.md",
-    "2024-07-17.md"
+    "Data Structure and Algorithm.md"
   ]
 }
