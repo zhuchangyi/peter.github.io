@@ -289,7 +289,11 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-redirect-from
+  - jekyll-mermaid
 # mimic GitHub Pages with --safe
+mermaid:
+  src: 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js'
+
 whitelist:
   - jekyll-paginate
   - jekyll-sitemap
